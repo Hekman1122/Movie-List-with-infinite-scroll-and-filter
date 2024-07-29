@@ -15,10 +15,18 @@ export default function MovieCard(props: TargetType) {
         height={240}
         className="rounded-md h-80 w-full"
       />
-      <h2 className="h-12">{title}</h2>
-      <p className="self-end">{new Date(release_date).toLocaleDateString()}</p>
-      <p>{genres}</p>
-      <p>{truncate(overview)}</p>
+      <h2 className="h-16 text-lg font-bold">{title}</h2>
+      <div className="flex justify-between items-center">
+        <p className="font-semibold">
+          {new Date(release_date).toLocaleDateString()}
+        </p>
+        <button
+          type="button"
+          className=" border-2 border-white font-semibold text-sm px-3 py-1 rounded-lg hover:text-yellow-500 hover:border-yellow-500 transition-colors duration-300"
+        >
+          More...
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,26 +1,20 @@
 import { fetchMovies, TargetType } from "@/app/actions/actions";
 import MovieCard from "./components/MovieCard";
+import Hero from "./components/Hero";
+import Category from "./components/Category";
 export default async function Home() {
   let one: TargetType[] = await fetchMovies();
-  return (
-    <main className="px-10 max-w-7xl m-auto">
-      <h1>Find movies you like and enjoy it.</h1>
-      <div className="flex justify-between items-center">
-        <ul className="flex items-center gap-6">
-          <li>All</li>
-          <li>Action</li>
-          <li>Comedy</li>
-          <li>Drama</li>
-          <li>Horror</li>
-          <li>Romance</li>
-        </ul>
-        {/* sort */}
-        <select>
-          <option value="popular"> Popular</option>
-          <option value="release_date">release_date</option>
-        </select>
-      </div>
 
+  function randomPickOne(lengthen: number): number {
+    return Math.floor(Math.random() * lengthen);
+  }
+
+  return (
+    <main className="max-w-7xl m-auto bg-neutral-800/80">
+      {/* Hero */}
+      <Hero imageUrl={one[randomPickOne(one.length)].poster_path} />
+      {/* Category */}
+      <Category />
       <article className="grid grid-cols-4 gap-6 justify-items-center">
         {one.map((movie) => {
           return <MovieCard key={movie.id} {...movie} />;
