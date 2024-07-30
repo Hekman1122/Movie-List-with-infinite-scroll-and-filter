@@ -12,7 +12,7 @@ export default function List({ text, selected, handleClick }: Props) {
           ? "text-yellow-500 duration-200 transition-colors cursor-pointer"
           : ""
       } li_style`}
-      data-textValue={text}
+      data-textvalue={text}
       onClick={handleClick}
     >
       {text}

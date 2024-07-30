@@ -31,18 +31,18 @@ export interface TargetType {
   poster_path: string;
   popularity: number;
   genres: string;
+  runtime: number;
 }
 export async function fetchMovies(): Promise<TargetType[]> {
-  // const url = "https://moviedatabase8.p.rapidapi.com/Random/20";
   const url =
-    "https://moviedatabase8.p.rapidapi.com/Filter?adult=false&MinYear=2015&limit=21";
+    "https://moviedatabase8.p.rapidapi.com/Filter?MinRating=5&MaxRating=10&MinYear=2000&MaxYear=2023&SpokenLanguage=English&Limit=20";
   const options = {
     method: "GET",
     headers: {
       "x-rapidapi-key": process.env.X_RAPID_API_KEY as string,
       "x-rapidapi-host": process.env.X_RAPID_API_HOST as string,
     },
-    next: { revalidate: 600 },
+    next: { revalidate: 100 },
   };
   const response = await fetch(url, options);
   if (!response.ok) {
@@ -58,6 +58,7 @@ export async function fetchMovies(): Promise<TargetType[]> {
       poster_path: movie.poster_path,
       popularity: movie.popularity,
       genres: movie.genres ? movie.genres : "",
+      runtime: movie.runtime,
     };
   });
   return targetProperties;
