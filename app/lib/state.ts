@@ -1,16 +1,16 @@
 import { create } from "zustand";
-import { TargetType } from "./type";
+import { MovieType } from "./type";
 
 type MovieArray = {
-  movies: TargetType[];
+  movies: MovieType[];
 };
 
 type Actions = {
-  updateMovieArray: (newMovieArray: TargetType[]) => void;
+  updateMovieArray: (newMovieArray: MovieType[]) => void;
 };
 
 export const useMovieStore = create<MovieArray & Actions>()((set) => ({
   movies: [],
-  updateMovieArray: (newMovieArray: TargetType[]) =>
+  updateMovieArray: (newMovieArray: MovieType[]) =>
     set((state) => ({ movies: [...state.movies, ...newMovieArray] })),
 }));

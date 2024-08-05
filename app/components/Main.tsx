@@ -2,17 +2,17 @@
 import MovieCard from "./MovieCard";
 import Hero from "./Hero";
 import Category from "./Category";
-import { TargetType } from "@/app/lib/type";
 import { useMovieStore } from "@/app/lib/state";
 import { useState } from "react";
 import Loading from "./Loading";
+import { MovieType } from "@/app/lib/type";
 type Props = {
-  originalMovies: TargetType[];
+  originalMovies: MovieType[];
 };
 
 export default function Main({ originalMovies }: Props) {
   const [limit, setLimit] = useState<number>(20);
- 
+
   const updateMovieArray = useMovieStore((state) => state.updateMovieArray);
   updateMovieArray(originalMovies);
   const movies = useMovieStore((state) => state.movies);
@@ -23,7 +23,7 @@ export default function Main({ originalMovies }: Props) {
   return (
     <>
       {/* Hero */}
-      <Hero imageUrl={movies[randomPickOne(movies.length)].poster_path} />
+      <Hero imageUrl={movies[randomPickOne(movies.length)].image} />
       {/* Category */}
       <Category />
       <article className="grid grid-cols-4 gap-6 justify-items-center">

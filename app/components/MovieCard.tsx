@@ -1,15 +1,13 @@
-import { TargetType } from "@/app/actions/actions";
+import Link from "next/link";
+import { MovieType } from "../lib/type";
 import Image from "next/image";
 
-export default function MovieCard(props: TargetType) {
-  const { id, title, overview, poster_path, genres, release_date } = props;
-  function truncate(str: string) {
-    return str.length > 120 ? str.substring(0, 120) + "..." : str;
-  }
+export default function MovieCard(props: MovieType) {
+  const { title, image, year, imdb_link } = props;
   return (
-    <div className="w-64 flex flex-col gap-4 py-4">
+    <div className="w-64 flex flex-col gap-2 py-4">
       <Image
-        src={poster_path}
+        src={image}
         alt={title}
         width={300}
         height={240}
@@ -17,14 +15,12 @@ export default function MovieCard(props: TargetType) {
       />
       <h2 className="h-16 text-lg font-bold">{title}</h2>
       <div className="flex justify-between items-center">
-        <p className="font-semibold">
-          {new Date(release_date).toLocaleDateString()}
-        </p>
+        <p className="font-semibold">{year}</p>
         <button
           type="button"
           className=" border-2 border-white font-semibold text-sm px-3 py-1 rounded-lg hover:text-yellow-500 hover:border-yellow-500 transition-colors duration-300"
         >
-          More...
+          <Link href={imdb_link}> More...</Link>
         </button>
       </div>
     </div>
