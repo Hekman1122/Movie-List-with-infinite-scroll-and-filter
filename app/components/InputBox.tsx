@@ -9,7 +9,7 @@ export default function InputBox() {
       />
       <datalist id="category">
         <option value="popular"> Popular</option>
-        <option value="release_date">release_date</option>
+        <option value="release_date">Year</option>
       </datalist>
     </>
   );

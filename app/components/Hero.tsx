@@ -23,7 +23,6 @@ export default function Hero({ imageUrl }: Props) {
           width={400}
           height={250}
           className="rounded-lg w-1/3 h-full shadow-md"
-          priority
         />
       </div>
     </section>

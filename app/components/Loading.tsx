@@ -1,9 +1,26 @@
-export default function Loading() {
+"use client";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+interface Props {
+  setLimit: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function Loading({ setLimit }: Props) {
+  const { ref, inView, entry } = useInView({
+    threshold: 1,
+    delay: 500,
+  });
+  useEffect(() => {
+    if (inView) {
+      setLimit((prev) => prev + 20);
+    }
+  }, [inView]);
   return (
-    <div
+    <section
       aria-label="Loading..."
       role="status"
       className="flex items-center justify-center space-x-2 mt-10"
+      ref={ref}
     >
       <svg
         className="h-16 w-16 animate-spin stroke-white"
@@ -82,6 +99,6 @@ export default function Loading() {
           strokeWidth="24"
         ></line>
       </svg>
-    </div>
+    </section>
   );
 }

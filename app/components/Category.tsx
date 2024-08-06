@@ -11,7 +11,7 @@ export default function Category() {
     setSelected(e.currentTarget.dataset.textvalue as string);
   }
   return (
-    <nav className="flex justify-between items-center px-6">
+    <nav className="flex justify-between items-center px-6 my-4">
       <ul className="flex items-center gap-6">
         {listData.map((item) => {
           return (
