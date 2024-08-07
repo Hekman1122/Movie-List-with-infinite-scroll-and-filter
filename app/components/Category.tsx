@@ -1,12 +1,20 @@
 "use client";
-
+type Props = {
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  selected: string;
+};
 import { useState } from "react";
 import List from "./List";
-import InputBox from "./InputBox";
-const listData = ["All", "Action", "Comedy", "Horror", "Drama", "Romance"];
-export default function Category() {
-  const [selected, setSelected] = useState<string>("All");
-
+const listData = [
+  "All",
+  "Action",
+  "Comedy",
+  "Horror",
+  "Drama",
+  "Romance",
+  "Biography",
+];
+export default function Category({ selected, setSelected }: Props) {
   function handleClick(e: React.MouseEvent<HTMLLIElement>) {
     setSelected(e.currentTarget.dataset.textvalue as string);
   }
@@ -24,8 +32,6 @@ export default function Category() {
           );
         })}
       </ul>
-      {/* sort */}
-      <InputBox />
     </nav>
   );
 }

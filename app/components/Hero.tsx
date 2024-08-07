@@ -2,8 +2,9 @@ interface Props {
   imageUrl: string;
 }
 import Image from "next/image";
+import { memo } from "react";
 
-export default function Hero({ imageUrl }: Props) {
+function Hero({ imageUrl }: Props) {
   return (
     <section className="flex justify-center items-center p-6">
       <div className="w-full h-96 flex justify-around items-center">
@@ -28,3 +29,5 @@ export default function Hero({ imageUrl }: Props) {
     </section>
   );
 }
+
+export default memo(Hero);
